@@ -1,0 +1,10 @@
+2020.2.8
+    -- 初始化项目
+    -- 安装stylus npm install stylus stylus-loader --save-dev
+    -- stylus 用于转换为css ,stylus-loader让webpack解析（理解）stylus
+    -- 语法
+        <style lang = "stylus" rel = "stylesheet/stylus">
+            .....
+        </style>
+
+        结构化，完全通过缩进控制，不需要大括号和分号，冒号是可选的
