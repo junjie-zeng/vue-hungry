@@ -8,3 +8,7 @@
         </style>
 
         结构化，完全通过缩进控制，不需要大括号和分号，冒号是可选的
+
+    -- 增加组件目录
+    -- 引入reset样式 http://meyerweb.com/eric/tools/css/reset/
+    -- FastClick 移动端0.3秒的延迟
