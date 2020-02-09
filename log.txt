@@ -15,7 +15,7 @@
 
 2020.2.9
     -- 引入路由 cnpm install vue-router --save
-    -- 定义路由 msite order search profile
+    -- 定义路由 msite order订单 search查询 profile个人中心
     -- 导航实现路由切换
         - 通过编程式导航实现路由的切换显示
         - 通过动态class和$route.path来实现tab样式切换
@@ -33,13 +33,22 @@
 
     -- 商家列表拆分（ShopList）
 
+    -- 登入与注册（Login）
+
 
 
 
 
 
         -- vue-router
-           - $route.path
+           - 定义路由
+           - $router.path
+           - $route代表当前路由
+              - 场景，通过$route进行跳转
+              - 通过$route中的属性动态的去添加一些类
+
+           - <router-link to = "/xxx"></router-link> 路由页面跳转
+        
         -- 动态添加class语法
            - 什么时候用对象语法？
                类名确定，只是不确定需要这个类名还是不需要
@@ -51,3 +60,5 @@
         
         -- swiper
            - new Swiper('',{})
+
+        -- 
