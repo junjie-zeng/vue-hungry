@@ -15,4 +15,18 @@
 
 2020.2.9
     -- 引入路由 cnpm install vue-router --save
-    -- 定义路由
+    -- 定义路由 msite order search profile
+    -- 导航实现路由切换
+        - 通过编程式导航实现路由的切换显示
+        - 通过动态class和$route.path来实现tab样式切换
+        - 通过阿里图标显示导航图标
+
+
+
+
+
+
+        -- 动态添加class语法
+           - 什么时候用对象语法？
+               类名确定，只是不确定需要这个类名还是不需要
+
