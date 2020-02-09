@@ -12,3 +12,7 @@
     -- 增加组件目录
     -- 引入reset样式 http://meyerweb.com/eric/tools/css/reset/
     -- FastClick 移动端0.3秒的延迟
+
+2020.2.9
+    -- 引入路由 cnpm install vue-router --save
+    -- 定义路由
