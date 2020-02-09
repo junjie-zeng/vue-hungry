@@ -21,7 +21,13 @@
         - 通过动态class和$route.path来实现tab样式切换
         - 通过阿里图标显示导航图标
 
+    -- 图片资源与静态页面
+    -- 封装头部组件(公共组件封装)(slot 传递标签，props传递数据)
+        - slot 占位符
+        - props父传子
 
+    -- swiper库定义轮播
+        - cnpm install --save swiper
 
 
 
@@ -30,3 +36,8 @@
            - 什么时候用对象语法？
                类名确定，只是不确定需要这个类名还是不需要
 
+        -- slot 占位符 (头部公共组件封装：slot 传递标签，props传递数据)
+           - 定义 <slot name = "left"></slot>
+           - 使用 <div slot = "left"></div>
+        
+        -- swiper
