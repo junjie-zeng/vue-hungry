@@ -28,16 +28,25 @@
 
     -- swiper库定义轮播
         - cnpm install --save swiper
+        - 引入swiper的js与样式
+        - 使用 new Swiper('',{})
 
 
 
 
+
+
+
+        -- vue-router
+           - $route.path
         -- 动态添加class语法
            - 什么时候用对象语法？
                类名确定，只是不确定需要这个类名还是不需要
+            - 底部导航动态添加class
 
         -- slot 占位符 (头部公共组件封装：slot 传递标签，props传递数据)
            - 定义 <slot name = "left"></slot>
            - 使用 <div slot = "left"></div>
         
         -- swiper
+           - new Swiper('',{})

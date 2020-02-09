@@ -115,7 +115,7 @@
                 </a>
               </div>
             </div>
-            <!-- Add Pagination -->
+            <!-- 分页器 -->
             <div class="swiper-pagination"></div>
           </div>
         </nav>
@@ -311,7 +311,18 @@
 
 <script>
     import HeaderTop from '../../components/HeaderTop/HeaderTop.vue'
+    import Swiper from 'swiper'
+    import 'swiper/css/swiper.min.css'
     export default{
+        mounted(){
+           // 创建一个Swiper实例对象，来实现轮播
+           new Swiper('.swiper-container',{
+               loop:true, // 可以循环轮播
+               pagination:{ // 如果需要分页器
+                   el:'.swiper-pagination'
+               }
+           })
+        },
         // 组件引入需要通过components进行映射
         components:{
             HeaderTop
