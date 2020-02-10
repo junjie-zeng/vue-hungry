@@ -39,9 +39,9 @@
 
 2020.2.10 
     -- 安装 axios cnpm install --save axios
-    -- 封装Promise  api->ajax.js
+    -- ajax函数封装（默认get请求） axios + promise  （api->ajax.js）
     -- 定义请求函数模块
-
+    -- 配置代理实现跨域ajax请求
 
 
 
@@ -49,9 +49,9 @@
 
         -- vue-router
            - 定义路由
-           - $router.path
-           - $route代表当前路由
-              - 场景，通过$route进行跳转
+           - $router：路由器对象，包含一些操作路由的参数，来实现编程式导航（路由跳转）
+              - 通过$route进行跳转
+          - $route：代表当前路由对象，一些当前路由信息数据的容器，path/meta/query/params  
               - 通过$route中的属性动态的去添加一些类
 
            - <router-link to = "/xxx"></router-link> 路由页面跳转
@@ -61,7 +61,7 @@
                类名确定，只是不确定需要这个类名还是不需要
             - 底部导航动态添加class
 
-        -- slot 占位符 (头部公共组件封装：slot 传递标签，props传递数据)
+        -- slot 占位符 (头部公共组件封装：slot 传递标签(通过slot来实现组件通信标签结构)，props传递数据)
            - 定义 <slot name = "left"></slot>
            - 使用 <div slot = "left"></div>
         
@@ -69,3 +69,6 @@
            - new Swiper('',{})
 
         -- 
+
+
+        
