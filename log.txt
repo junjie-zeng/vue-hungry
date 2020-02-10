@@ -34,6 +34,12 @@
     -- 商家列表拆分（ShopList）
 
     -- 登入与注册（Login）
+    
+    -- 添加后台
+
+2020.2.10 
+    -- 安装 axios cnpm install --save axios
+    -- 封装Promise  api->ajax.js
 
 
 
