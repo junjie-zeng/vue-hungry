@@ -14,7 +14,7 @@ import { reqAddress,reqFoodCategorys,reqShopList} from '../api'
 
 export default {
     // 异步获取地址action
-    async getAddress({commit,state},){
+    async getAddress({commit,state}){
         // 发送异步ajax请求
         const geohash = state.latitude + ',' + state.longitude
         const result  = await reqAddress(geohash)
@@ -26,7 +26,7 @@ export default {
         }
     },
     // 异步获取食品分类action
-    async getCategorys({commit,state},){
+    async getCategorys({commit,state}){
         // 发送异步ajax请求
         const result  = await reqFoodCategorys();
         
@@ -38,7 +38,7 @@ export default {
     },
 
     // 异步获取商家列表action
-    async getShops({commit,state},){
+    async getShops({commit,state}){
         // 发送异步ajax请求
         const latitude = state.latitude;
         const longitude = state.longitude;
