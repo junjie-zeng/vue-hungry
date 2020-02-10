@@ -9,6 +9,9 @@
 <script>
 import FooterGuide from './components/FooterGuide/FooterGuide.vue'
 export default {
+  mounted(){
+    this.$store.dispatch('getAddress')
+  },
   // 组件引入需要通过components进行映射
   components:{
     FooterGuide

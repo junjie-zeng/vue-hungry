@@ -41,7 +41,10 @@
     -- 安装 axios cnpm install --save axios
     -- ajax函数封装（默认get请求） axios + promise  （api->ajax.js）
     -- 定义请求函数模块
+
     -- 配置代理实现跨域ajax请求
+
+    -- 使用vuex管理状态 cnpm install --save vuex
 
 
 
