@@ -8,9 +8,16 @@
 
 <script>
 import FooterGuide from './components/FooterGuide/FooterGuide.vue'
+// 映射函数
+import { mapActions } from 'vuex'
 export default {
   mounted(){
-    this.$store.dispatch('getAddress')
+    // 获取地址
+    //this.$store.dispatch('getAddress')
+    this.getAddress();
+  },
+  methods:{
+     ...mapActions(['getAddress'])
   },
   // 组件引入需要通过components进行映射
   components:{

@@ -1,7 +1,7 @@
 <template>
      <section class="msite">
         <!--首页头部-->
-        <HeaderTop title="湖南省株洲市">
+        <HeaderTop :title="address.name">
             <!-- slot 指定插入到哪 -->
             <span class="header_search" slot = "left">
                 <i class="iconfont icon-sousuo"></i>
@@ -132,6 +132,7 @@
 </template>
 
 <script>
+    import { mapState } from 'vuex'
     import Swiper from 'swiper'
     import 'swiper/css/swiper.min.css'
     // 头部组件
@@ -148,6 +149,12 @@
                    el:'.swiper-pagination'
                }
            })
+
+           
+        },
+        computed:{
+          // 读取状态
+          ...mapState(['address'])
         },
         // 组件引入需要通过components进行映射
         components:{
