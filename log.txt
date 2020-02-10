@@ -40,6 +40,7 @@
 2020.2.10 
     -- 安装 axios cnpm install --save axios
     -- 封装Promise  api->ajax.js
+    -- 定义请求函数模块
 
 
 
