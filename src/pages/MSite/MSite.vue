@@ -3,12 +3,15 @@
         <!--首页头部-->
         <HeaderTop :title="address.name">
             <!-- slot 指定插入到哪 -->
-            <span class="header_search" slot = "left">
+            <router-link class="header_search" slot = "left" to = "/search">
                 <i class="iconfont icon-sousuo"></i>
-            </span>
-            <span class="header_login" slot = "right">
-                <span class="header_login_text">登录|注册</span>
-            </span>
+            </router-link>
+            <router-link class="header_login" slot = "right" :to = "userInfo._id ? '/userinfo' :'/login'">
+                <span class="header_login_text" v-if = "!userInfo._id ">登录|注册</span>
+                <span class="header_login_text" v-else>
+                  <i class = "iconfont icon-icon--my"></i>
+                </span>
+            </router-link>
         </HeaderTop>
         <!--首页导航-->
         <nav class="msite_nav">
@@ -64,7 +67,7 @@
         },
         computed:{
           // 读取状态
-          ...mapState(['address','categorys','shops']),
+          ...mapState(['address','categorys','shops','userInfo']),
           // 根据categorys一维数组生成一个二维数据(小数组中的元素数组最大个数为8)
           categorysArr(){
             const  {categorys} = this;

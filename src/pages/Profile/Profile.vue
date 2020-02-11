@@ -3,7 +3,7 @@
         <HeaderTop title="我的"></HeaderTop>
         <section class="profile-number">
           <!-- 跳转 -->
-          <router-link to = "/login" class="profile-link">
+          <router-link :to = "userInfo._id ? '/userinfo' :'/login'" class="profile-link">
             <div class="profile_image">
               <i class="iconfont icon-person"></i>
             </div>
