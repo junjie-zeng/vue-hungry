@@ -38,7 +38,7 @@
                 </section>
                 <section class="login_message">
                   <input type="text" maxlength="11" placeholder="验证码" v-model="captcha">
-                  <img class="get_verification" src="./images/captcha.svg" alt="captcha">
+                  <img class="get_verification" src="http://localhost:4000/captcha" alt="captcha" @click = "getCaptcha">
                 </section>
               </section>
             </div>
@@ -60,7 +60,7 @@
     export default {
         data(){
           return {
-              loginWay:true, // true代表短信登录，false代表密码登录
+              loginWay:false, // true代表短信登录，false代表密码登录
               phone:'', // 手机号
               pwd:'', // 密码
               captcha:'', // 动态验证码
@@ -128,6 +128,11 @@
 
             }
 
+          },
+          // 获取图形验证码
+          getCaptcha(event){
+            // 每次指定的src要不一样
+            event.target.src = "http://localhost:4000/captcha?timer=" + Date.now();
           },
           // 弹框函数
           showAlert(alertText){
