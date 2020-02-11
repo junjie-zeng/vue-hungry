@@ -15,9 +15,11 @@ export default {
     // 获取地址
     //this.$store.dispatch('getAddress')
     this.getAddress();
+    // 获取用户信息实现自动登录
+    this.getUserInfo();
   },
   methods:{
-     ...mapActions(['getAddress'])
+     ...mapActions(['getAddress','getUserInfo'])
   },
   // 组件引入需要通过components进行映射
   components:{

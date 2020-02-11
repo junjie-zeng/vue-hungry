@@ -3,7 +3,7 @@
         <HeaderTop title="我的"></HeaderTop>
         <section class="profile-number">
           <!-- 跳转 -->
-          <router-link :to = "userInfo._id ? '/userinfo' :'/login'" class="profile-link">
+          <router-link :to = "userInfo._id ? '/userinfo' : '/login'" class="profile-link">
             <div class="profile_image">
               <i class="iconfont icon-person"></i>
             </div>
@@ -13,7 +13,7 @@
                 <span class="user-icon">
                   <i class="iconfont icon-shouji icon-mobile"></i>
                 </span>
-                <span class="icon-mobile-number">{{userInfo.phone  ||  '暂无绑定手机号'}}</span>
+                <span class="icon-mobile-number">{{(userInfo.phone && userInfo.phone)  ||  '暂无绑定手机号'}}</span>
               </p>
             </div>
             <span class="arrow">

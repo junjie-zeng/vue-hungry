@@ -11,7 +11,7 @@ import {
     RECEIVE_USERINFO
 } from './mutation-types'
 
-import { reqAddress,reqFoodCategorys,reqShopList} from '../api'
+import { reqAddress,reqFoodCategorys,reqShopList,reqUserInfo} from '../api'
 
 export default {
     // 异步获取地址action
@@ -52,7 +52,16 @@ export default {
         }
     },
     
-
+    // 异步获取用户信息
+    async getUserInfo({commit}){
+        const result = await reqUserInfo();
+        console.log(result)
+        if(result.code === 0){
+            const userInfo = result.data;
+            commit(RECEIVE_USERINFO,{userInfo})
+        }
+    }
+    ,
     // 以下直接在页面中将请求信息拿到然后取更新state
     // 同步纪录用户信息action 
     recordUser({commit},userInfo){
