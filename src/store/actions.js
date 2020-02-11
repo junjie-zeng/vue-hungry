@@ -7,7 +7,8 @@
 import { 
     RECEIVE_ADDRESS,
     RECEIVE_CATEGORS,
-    RECEIVE_SHOPS
+    RECEIVE_SHOPS,
+    RECEIVE_USERINFO
 } from './mutation-types'
 
 import { reqAddress,reqFoodCategorys,reqShopList} from '../api'
@@ -49,6 +50,13 @@ export default {
             const shops = result.data;
             commit(RECEIVE_SHOPS,{shops})
         }
+    },
+    
+
+    // 以下直接在页面中将请求信息拿到然后取更新state
+    // 同步纪录用户信息action 
+    recordUser({commit},userInfo){
+        commit(RECEIVE_USERINFO,{userInfo})
     }
     
 }
