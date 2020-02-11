@@ -82,6 +82,18 @@
        - 登录
            - 更新用户中心
        - 自动登录
+       - 退出登录
+       - 使用 mint-ui 
+           - 安装 cnpm install --save mint-ui
+           - 安装按需打包 cnpm install --save-dev babel-plugin-component
+              - 修改babel配置 (以下配置针对mint-ui按需打包)
+              "plguins":["transform-runtime",["component",[
+                  {
+                      "libraryName":"mint-ui",
+                      "style":true
+                  }
+              ]]]
+          
 
 
         -- vue-router

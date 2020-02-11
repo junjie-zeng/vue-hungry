@@ -8,10 +8,11 @@ import {
     RECEIVE_ADDRESS,
     RECEIVE_CATEGORS,
     RECEIVE_SHOPS,
-    RECEIVE_USERINFO
+    RECEIVE_USERINFO,
+    RESET_USER_INFO
 } from './mutation-types'
 
-import { reqAddress,reqFoodCategorys,reqShopList,reqUserInfo} from '../api'
+import { reqAddress,reqFoodCategorys,reqShopList,reqUserInfo,reqLogout} from '../api'
 
 export default {
     // 异步获取地址action
@@ -60,6 +61,14 @@ export default {
             const userInfo = result.data;
             commit(RECEIVE_USERINFO,{userInfo})
         }
+    },
+    // 异步登出action
+    async logout({commit}){
+        const result = await reqLogout();
+        if(result.code === 0){
+            commit(RESET_USER_INFO)
+        }
+
     }
     ,
     // 以下直接在页面中将请求信息拿到然后取更新state
