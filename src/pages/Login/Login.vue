@@ -9,14 +9,14 @@
           </div>
         </div>
         <div class="login_content">
-          <form>
+          <form @submit.prevent="login">
             <div :class="{'on':loginWay}" >
               <section class="login_message">
                 <input type="tel" maxlength="11" placeholder="手机号" v-model = "phone">
                 <button :disabled="!rightPhone" class="get_verification" :class="{'right_phone':rightPhone}" @click.prevent="getCode">{{computeTime > 0 ? `已发送(${computeTime}s)` : '获取验证码'}}</button>
               </section>
               <section class="login_verification">
-                <input type="tel" maxlength="8" placeholder="验证码">
+                <input type="tel" maxlength="8" placeholder="验证码" v-model="code">
               </section>
               <section class="login_hint">
                 温馨提示：未注饿了么外卖帐号的手机号，登录时将自动注册，且代表已同意
@@ -26,7 +26,7 @@
             <div :class="{'on':!loginWay}">
               <section>
                 <section class="login_message">
-                  <input type="tel" maxlength="11" placeholder="手机/邮箱/用户名">
+                  <input type="tel" maxlength="11" placeholder="手机/邮箱/用户名" v-model="name">
                 </section>
                 <section class="login_verification">
                   <input type="text" maxlength="8" placeholder="密码" v-if = "showPwd" v-model="pwd">
@@ -37,7 +37,7 @@
                   </div>
                 </section>
                 <section class="login_message">
-                  <input type="text" maxlength="11" placeholder="验证码">
+                  <input type="text" maxlength="11" placeholder="验证码" v-model="captcha">
                   <img class="get_verification" src="./images/captcha.svg" alt="captcha">
                 </section>
               </section>
@@ -50,18 +50,31 @@
           <i class="iconfont icon-jiantou4"></i>
         </a>
       </div>
+      <!-- 消息弹框 -->
+      <AlertTip :alertText = "alertText" v-if ="alertShow" @closeTip = "closeTip"/>
     </section>
+    
 </template>
 <script>
+    import AlertTip from '../../components/AlertTip/AlertTip'
     export default {
         data(){
           return {
               loginWay:true, // true代表短信登录，false代表密码登录
               phone:'', // 手机号
               pwd:'', // 密码
+              captcha:'', // 动态验证码
+              code:'', // 短信验证码
+              name:'', // 用户名
               computeTime:0,// 计时的时间
               showPwd:false, // 是否显示密码
+              alertText:'', // 消息弹框
+              alertShow:false, // 是否显示弹框
           }
+        },
+        // 组件引入需要通过components进行映射
+        components:{
+            AlertTip
         },
         computed:{
           // 计算属性计算（通过正则验证手机号是否正确）
@@ -87,12 +100,44 @@
                   // 发送ajax请求（向指定手机号发送验证码）
 
               }
-              
+          },
+          // 登录
+          login(){
+            // 表单验证
+            if(this.loginWay){ // 短信登录
+                const {rightPhone, phone,code } = this;
+                if(!rightPhone){
+                   // 手机号不正确
+                   this.showAlert("手机号不正确");
+                }else if(!/^\d{6}$/.test(code)){
+                    // 短信验证码必须是6位数字
+                    this.showAlert("短信验证码必须是6位数字");
+                }
+            }else{ // 密码登录
+                const { name,pwd,captcha } = this;
+                if(!this.name){
+                   // 必须指定用户名
+                   this.showAlert("请输入用户名");
+                }else if(!this.pwd){
+                   // 必须指定密码
+                   this.showAlert("请输入密码");
+                }if(!this.captcha){
+                   // 必须指定验证码
+                   this.showAlert("请输入验证码");
+                }
 
+            }
 
-             
-
-
+          },
+          // 弹框函数
+          showAlert(alertText){
+              this.alertShow = true;
+              this.alertText = alertText;
+          },
+          // 关闭弹框
+          closeTip(){
+              this.alertShow = false;
+              this.alertText = '';
           }
         }
         
