@@ -26,6 +26,9 @@
         // 组件引入需要通过components进行映射
         components:{
             ShopHeader
+        },
+        mounted(){
+            this.$store.dispatch("getShopInfo")
         }
         
     }

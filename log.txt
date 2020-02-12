@@ -95,10 +95,16 @@
               ]]]
           
 
-2020.2-12
+2020.2-12  10 18 17 19 10
     -- 商家界面搭建
          - 拆分并定义路由 shop  shopGoods ShopInfo ShopRatings ShopHeader
 
+    -- 模拟mock数据
+       -- 
+       -- 安装mockjs cnpm install --save mockjs
+          - 编写 mockServer.js
+          - 在入口文件中使用mockServer.js
+          - ajax请求mock.js模拟接口
 
 
 

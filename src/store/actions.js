@@ -9,10 +9,13 @@ import {
     RECEIVE_CATEGORS,
     RECEIVE_SHOPS,
     RECEIVE_USERINFO,
-    RESET_USER_INFO
+    RESET_USER_INFO,
+    RECEIVE_GOODS,
+    RECEIVE_RATINGS,
+    RECEIVE_INFO
 } from './mutation-types'
 
-import { reqAddress,reqFoodCategorys,reqShopList,reqUserInfo,reqLogout} from '../api'
+import { reqAddress,reqFoodCategorys,reqShopList,reqUserInfo,reqLogout,reqShopInfo,reqShopRatings,reqShopGoods} from '../api'
 
 export default {
     // 异步获取地址action
@@ -71,10 +74,35 @@ export default {
 
     }
     ,
-    // 以下直接在页面中将请求信息拿到然后取更新state
-    // 同步纪录用户信息action 
+    
+    // 同步纪录用户信息action (直接在页面中将请求信息拿到然后取更新state)
     recordUser({commit},userInfo){
         commit(RECEIVE_USERINFO,{userInfo})
+    },
+
+    // 异步获取商家信息
+    async getShopInfo({commit}){
+        const result = await reqShopInfo();
+        if(result.code == 0){
+            const info = result.data;
+            commit(RECEIVE_INFO,{info})
+        }
+    },
+    // 异步获取商家评价信息
+    async getShopRatings({commit}){
+        const result = await reqShopRatings();
+        if(result.code == 0){
+            const ratings = result.data;
+            commit(RECEIVE_RATINGS,{ratings})
+        }
+    },
+
+    // 异步获取商家食物
+    async getShopGoods({commit}){
+        const goods = await reqShopGoods();
+        if(result.code == 0){
+            const goods = result.data;
+            commit(RECEIVE_RATINGS,{goods})
+        } 
     }
-    
 }
