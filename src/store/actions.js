@@ -99,10 +99,10 @@ export default {
 
     // 异步获取商家食物
     async getShopGoods({commit}){
-        const goods = await reqShopGoods();
+        const result = await reqShopGoods();
         if(result.code == 0){
             const goods = result.data;
-            commit(RECEIVE_RATINGS,{goods})
+            commit(RECEIVE_GOODS,{goods})
         } 
     }
 }
