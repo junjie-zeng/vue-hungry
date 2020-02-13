@@ -32,7 +32,10 @@
                                                 <span class="now">￥{{food.price}}</span> 
                                                 <span class = "old" v-if = "food.oldPrice">￥{{food.oldPrice}}</span>
                                             </div> 
-                                        <div class="cartcontrol-wrapper"> 操作 </div> 
+                                        <div class="cartcontrol-wrapper"> 
+                                          <!--控制 -->
+                                          <CartControl :food = "food"/>  
+                                        </div> 
                                     </div>
                                 </li> 
                             </ul>
@@ -47,6 +50,7 @@
 <script>
     import { mapState } from 'vuex';
     import BScroll from 'better-scroll'
+    import CartControl from '../../../components/CartControl/CartControl.vue'
     export default {
         data(){
             return {
@@ -54,6 +58,10 @@
                 tops:[], // 所有右侧分类li的top组成的数组（列表第一次显示之后不再变化）
                 //currentIndex:0
             }
+        },
+        // 组件引入需要通过components进行映射
+        components:{
+            CartControl
         },
         mounted(){
             // 调用异步action

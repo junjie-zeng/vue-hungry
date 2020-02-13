@@ -12,7 +12,9 @@ import {
     RESET_USER_INFO,
     RECEIVE_GOODS,
     RECEIVE_RATINGS,
-    RECEIVE_INFO
+    RECEIVE_INFO,
+    INCREMENT_FOOD_COUNT,
+    DECREMENT_FOOD_COUNT
 } from './mutation-types'
 // 封装api函数
 import { reqAddress,reqFoodCategorys,reqShopList,reqUserInfo,reqLogout,reqShopInfo,reqShopRatings,reqShopGoods} from '../api'
@@ -106,5 +108,16 @@ export default {
             // 数据更新了调用回调
             callback && callback()
         } 
+    },
+
+    // 同步更新food中的count值
+    updateFoodCount({commit},{isAdd,food}){
+        // console.log(food)
+        if(isAdd){
+            commit(INCREMENT_FOOD_COUNT,{food})
+        }else{
+            commit(DECREMENT_FOOD_COUNT,{food})
+        }
     }
 }
+
