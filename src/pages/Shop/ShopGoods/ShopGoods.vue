@@ -13,10 +13,10 @@
                     </ul>
               </div> 
               <div class="foods-wrapper" >
-                   <ul>
+                   <ul ref = "foodsUl">
                        <li class="food-list-hook" v-for = "(good,index) in goods" :key = "index"> 
                            <h1 class="title">{{good.name}}</h1> 
-                           <ul>
+                           <ul >
                                <li class="food-item bottom-border-1px" v-for = "(food,index) in good.foods" :key = "index"> 
                                    <div class="icon"> 
                                        <img width="57" height="57" :src="food.icon">
@@ -50,18 +50,20 @@
     export default {
         data(){
             return {
-                scrolly:0, // 右侧滑动的Y轴的坐标（滑动过程实时变化）
+                scrollY:0, // 右侧滑动的Y轴的坐标（滑动过程实时变化）
                 tops:[], // 所有右侧分类li的top组成的数组（列表第一次显示之后不再变化）
-                currentIndex:0
+                //currentIndex:0
             }
         },
         mounted(){
             // 调用异步action
             this.$store.dispatch('getShopGoods',()=>{
               this.$nextTick(()=>{ // 数据更新后执行
-                // 列表显示之后创建
-                new BScroll('.menu-wrapper')
-                new BScroll('.foods-wrapper')
+                  // 初始化滚动条
+                  this._initScroll();
+                  // 初始化tops
+                  this._initTops();
+
               })
              
             })
@@ -71,10 +73,60 @@
         computed:{
             // 读取state
             ...mapState(['goods']),
-            // 计算得到当前分类的下标
-            // currentIndex(){
+            // 计算得到当前分类的下标(初始和相关数据发生了变化就会执行)
+            currentIndex(){
+                // 得到条件数据
+                const { scrollY,tops } = this;
+                // 根据条件计算产生一个结果
+                const index = tops.findIndex((top,index) => {
+                  // 当前滚动位置的坐标（scrollY） >= 当前top 并且 当前滚动位置的坐标（scrollY） < 下一个top
+                  return scrollY >= top && scrollY < tops[index +1];
+                });
+                return index
+            }
+        },
+        methods:{
+          // 初始化滚动条
+          _initScroll(){
+              // 列表显示之后创建
+                new BScroll('.menu-wrapper')
+                // 食物列表
+                const foodsScroll = new BScroll('.foods-wrapper',{
+                    probeType:2, // 
+                });
+                // 食物列表滑动监听(实时监听)
+                foodsScroll.on('scroll',({x,y}) => {
+                    // console.log(x,y)
+                    // 搜集 scrollY
+                    this.scrollY = Math.abs(y)
+                });
+                // 监听滚动结束时返回最终结果
+                foodsScroll.on('scrollEnd',({x,y}) => {
+                    // console.log(x,y)
+                    // 搜集 scrollY
+                    this.scrollY = Math.abs(y)
+                })
 
-            // }
+
+          },
+          // 初始化tops
+          _initTops(){
+              // 初始化tops
+              const tops = [] ;
+              // 默认为0
+              let top = 0; 
+              tops.push(top)
+              // 得到所有分类的li(指定在哪个标签下的li,这样就不用全局去找li了)
+              const lis = this.$refs.foodsUl.getElementsByClassName("food-list-hook");
+              // 将类数组转换为数组
+              Array.prototype.slice.call(lis).forEach(li=>{
+                top += li.clientHeight
+                tops.push(top)
+              })
+              console.log(tops);
+              // 更新数据
+              this.tops = tops;
+          }
         }
         
     }

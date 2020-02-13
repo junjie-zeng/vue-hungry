@@ -114,10 +114,14 @@
 2020.2.13 
      -- 使用第三方库 better-scroll 滑动 cnpm install better-scroll --save
      -- 列表滑动(列表显示之后创建)
-         - 通过调用异步的action，传递回调数的方式，当数据已经更新了state在去创建
-   
-
-
+         - 通过调用异步的action，传递回调数的方式，当数据已经更新了state，在去创建
+     
+     -- 通过滑动更新当前分类
+        - 绑定滑动事件搜集 scrollY   
+        - 页面渲染之后搜集所有li距离顶部的距离 tops
+        - currentIndex 计算属性，根据条件产生结果
+          - 根据scrollY，在tops中通过（findIndex）找到下标，如果 当前滚动位置的坐标（scrollY） >= 当前top 并且 当前滚动位置的坐标（scrollY） < 下一个top
+          - 最后返回下标
 
 
 
