@@ -42,6 +42,8 @@
                         </li>
                     </ul> 
                 </div> 
+              <!-- 购物车 -->
+              <shopCart/>
          </div>
          <Food :food = "food" ref = "food"/>
     </div> 
@@ -55,6 +57,8 @@
     import CartControl from '../../../components/CartControl/CartControl.vue'
     // 详情组件
     import Food from '../../../components/Food/Food.vue'
+    // 购物车
+    import shopCart from '../../../components/shopCart/shopCart.vue'
     export default {
         data(){
             return {
@@ -68,6 +72,7 @@
           // 商品控制
             CartControl,
             Food, // 详情
+            shopCart, // 购物车
         },
         mounted(){
             // 调用异步action
