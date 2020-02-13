@@ -123,6 +123,12 @@
           - 根据scrollY，在tops中通过（findIndex）找到下标，如果 当前滚动位置的坐标（scrollY） >= 当前top 并且 当前滚动位置的坐标（scrollY） < 下一个top
           - 最后返回下标
 
+     -- 点击分类滑动列表
+        - 给li增加事件，传递当前下标
+        - 通过下标在tops中找到右侧某个分类距离顶部的距离
+        - 将找到距离赋值给scrollY,scrollY变化了，计算属性也会被更新，因此显示了当前的分类
+        - 通过 foodsScroll的scrollTo方法，传递当前scrollY的坐标平滑滚动
+
 
 
 

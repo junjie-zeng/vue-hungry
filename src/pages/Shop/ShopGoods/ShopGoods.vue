@@ -4,7 +4,7 @@
               <div class="menu-wrapper" >
                    <ul>
                        <!-- current 选中样式 -->
-                       <li class="menu-item" v-for = "(good,index) in goods" :key = "index" :class = "{current:index == currentIndex}">
+                       <li class="menu-item" v-for = "(good,index) in goods" :key = "index" :class = "{current:index == currentIndex}" @click = "clickMenuItem(index)">
                             <span class="text bottom-border-1px">
                                  <img class="icon" :src="good.icon" v-if = "good.icon">
                                   {{good.name}} 
@@ -14,7 +14,7 @@
               </div> 
               <div class="foods-wrapper" >
                    <ul ref = "foodsUl">
-                       <li class="food-list-hook" v-for = "(good,index) in goods" :key = "index"> 
+                       <li class="food-list-hook" v-for = "(good,index) in goods" :key = "index" > 
                            <h1 class="title">{{good.name}}</h1> 
                            <ul >
                                <li class="food-item bottom-border-1px" v-for = "(food,index) in good.foods" :key = "index"> 
@@ -89,19 +89,22 @@
           // 初始化滚动条
           _initScroll(){
               // 列表显示之后创建
-                new BScroll('.menu-wrapper')
+                new BScroll('.menu-wrapper',{
+                 // click:true
+                })
                 // 食物列表
-                const foodsScroll = new BScroll('.foods-wrapper',{
+                this.foodsScroll = new BScroll('.foods-wrapper',{
                     probeType:2, // 
+                   // click:true
                 });
                 // 食物列表滑动监听(实时监听)
-                foodsScroll.on('scroll',({x,y}) => {
+                this.foodsScroll.on('scroll',({x,y}) => {
                     // console.log(x,y)
                     // 搜集 scrollY
                     this.scrollY = Math.abs(y)
                 });
                 // 监听滚动结束时返回最终结果
-                foodsScroll.on('scrollEnd',({x,y}) => {
+                this.foodsScroll.on('scrollEnd',({x,y}) => {
                     // console.log(x,y)
                     // 搜集 scrollY
                     this.scrollY = Math.abs(y)
@@ -126,6 +129,16 @@
               console.log(tops);
               // 更新数据
               this.tops = tops;
+          },
+          // 点击分类滑动右侧列表(当右侧滚动后计算属性currentIndex 也会被触发因为Y轴变化了)
+          clickMenuItem(index){
+              // 得到目标位置
+              const Y = this.tops[index];
+              // 将scrollY改变了同时计算属性里面会被更新（分两项成当前分类）
+              this.scrollY = Y;
+              // 平滑滑动右侧列表
+              this.foodsScroll.scrollTo(0,-Y,500);
+              //console.log(index)
           }
         }
         
