@@ -95,7 +95,7 @@
               ]]]
           
 
-2020.2-12  10 18 17 19 10 38 33 23
+2020.2-12  
     -- 商家界面搭建
          - 拆分并定义路由 shop  shopGoods ShopInfo ShopRatings ShopHeader
 
@@ -109,8 +109,12 @@
     -- 商家头部组件
     -- 显示食品列表 ShopGoods
         -- 拆分组件 cartControl shopCart Food
-        -- 使用第三方库 better-scroll 滑动
+        
 
+2020.2.13 
+     -- 使用第三方库 better-scroll 滑动 cnpm install better-scroll --save
+     -- 列表滑动(列表显示之后创建)
+         - 通过调用异步的action，传递回调数的方式，当数据已经更新了state在去创建
    
 
 

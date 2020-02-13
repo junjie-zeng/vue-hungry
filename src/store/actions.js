@@ -14,7 +14,7 @@ import {
     RECEIVE_RATINGS,
     RECEIVE_INFO
 } from './mutation-types'
-
+// 封装api函数
 import { reqAddress,reqFoodCategorys,reqShopList,reqUserInfo,reqLogout,reqShopInfo,reqShopRatings,reqShopGoods} from '../api'
 
 export default {
@@ -98,11 +98,13 @@ export default {
     },
 
     // 异步获取商家食物
-    async getShopGoods({commit}){
+    async getShopGoods({commit},callback){
         const result = await reqShopGoods();
         if(result.code == 0){
             const goods = result.data;
             commit(RECEIVE_GOODS,{goods})
+            // 数据更新了调用回调
+            callback && callback()
         } 
     }
 }
