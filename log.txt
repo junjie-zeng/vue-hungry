@@ -160,6 +160,13 @@
            - 解决：保证创建的对象实例是唯一的,将实例对象保存在当前组件中 this.scroll = new BScroll('xxx')
         
         - 清空购物车
+           - 调用同步action
+        
+        - 商品评价组件
+            - 调用异步评价action
+            - 读取ratings与info
+            -- 数据渲染
+            -- 评价列表过滤显示
      
 
 

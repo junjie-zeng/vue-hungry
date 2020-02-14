@@ -21,5 +21,9 @@ export default {
             return total + food.count * food.price
         },0)
 
+    },
+    positiveSize(state){
+        return state.ratings.reduce((total,rating)=>total + (rating.rateType == 0 ? 1 : 0),0)
+
     }
 }
