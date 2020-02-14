@@ -20,3 +20,6 @@ export const DECREMENT_FOOD_COUNT = 'decrement_food_count'
 
 // 清空购物车
 export const CLEAR_CART = 'clear_cart';
+
+// 搜索搜索商家信息
+export const RECEIVE_SEARCH_SHOP = "receive_search_shop"

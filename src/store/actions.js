@@ -15,10 +15,11 @@ import {
     RECEIVE_INFO,
     INCREMENT_FOOD_COUNT,
     DECREMENT_FOOD_COUNT,
-    CLEAR_CART
+    CLEAR_CART,
+    RECEIVE_SEARCH_SHOP
 } from './mutation-types'
 // 封装api函数
-import { reqAddress,reqFoodCategorys,reqShopList,reqUserInfo,reqLogout,reqShopInfo,reqShopRatings,reqShopGoods} from '../api'
+import { reqAddress,reqFoodCategorys,reqShopList,reqUserInfo,reqLogout,reqShopInfo,reqShopRatings,reqShopGoods, reqSearchShops} from '../api'
 
 export default {
     // 异步获取地址action
@@ -125,6 +126,17 @@ export default {
     // 清空购物车同步action
     clearCart({commit}){
         commit(CLEAR_CART)
+    },
+
+    // 异步搜索商家action
+    async searchShops({commit,state},keyword){
+        const geohash = state.latitude + ',' + state.longitude
+        const result = await reqSearchShops(geohash,keyword);
+        if(result.code === 0){
+            const searchShops = result.data;
+            commit(RECEIVE_SEARCH_SHOP,{searchShops})
+        }
+        
     }
 }
 
