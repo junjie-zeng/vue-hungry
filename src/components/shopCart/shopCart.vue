@@ -16,32 +16,36 @@
                     <div class="pay" :class = "payClass"> {{payText}}</div>
                 </div> 
             </div> 
-            <div class="shopcart-list" v-show = "listShow">
-                <div class="list-header">
-                    <h1 class="title">购物车</h1>
-                    <span class="empty">清空</span>
-                </div>
-                 <div class="list-content">
-                     <ul>
-                         <li class="food" v-for = "(cartFood,index) in cartFoods" :key = "index">
-                            <span class="name">{{cartFood.name}}</span>
-                            <div class="price">
-                                <span>￥{{cartFood.price}}</span>
-                            </div>
-                            <div class="cartcontrol-wrapper">
-                                <!-- 商品控制 -->
-                                <CartControl :food = "cartFood"/>
-                            </div>
-                         </li>
-                      </ul> 
+            <transition name = "move">
+              <div class="shopcart-list" v-show = "listShow">
+                  <div class="list-header">
+                      <h1 class="title">购物车</h1>
+                      <span class="empty" @click = "clearCart">清空</span>
                   </div>
-             </div>
+                  <div class="list-content">
+                      <ul>
+                          <li class="food" v-for = "(cartFood,index) in cartFoods" :key = "index">
+                              <span class="name">{{cartFood.name}}</span>
+                              <div class="price">
+                                  <span>￥{{cartFood.price}}</span>
+                              </div>
+                              <div class="cartcontrol-wrapper">
+                                  <!-- 商品控制 -->
+                                  <CartControl :food = "cartFood"/>
+                              </div>
+                          </li>
+                        </ul> 
+                    </div>
+              </div>
+            </transition>
         </div> 
         <div class="list-mask" v-show = "listShow" @click = "toggleShow">
         </div>
     </div>
 </template>
 <script>
+    import { MessageBox } from 'mint-ui'
+    import BScroll from 'better-scroll'
     import { mapState ,mapGetters} from 'vuex'
     import CartControl from '../CartControl/CartControl.vue'
     export default {
@@ -87,6 +91,20 @@
                     this.isShow = false;
                     return false;
                 }
+                // 如果购物车列表显示，则创建滑动对象
+                if(this.isShow){
+                    this.$nextTick(()=>{
+                      // 判断是否已经创建过(单例的)
+                      if(!this.scroll){
+                        this.scroll = new BScroll('.list-content',{
+                          click:true
+                        })
+                      }else{
+                        // 让滚动条刷新，重新统计高度（防止第一次内容很多的时候，下拉不动）
+                        this.scroll.refresh();
+                      }
+                    })
+                }
 
                 return this.isShow
             }
@@ -98,6 +116,18 @@
                     this.isShow = !this.isShow;
                 }
                 
+            },
+            // 清空购物车
+            clearCart(){
+              MessageBox.confirm('确定清空购物车吗').then(
+                yes=>{
+                  // 调用aciton
+                  this.$store.dispatch('clearCart')
+                },
+                no=>{
+                  console.log(no)
+                }
+              )
             }
         }
     }

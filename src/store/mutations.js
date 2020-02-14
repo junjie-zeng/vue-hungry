@@ -13,7 +13,8 @@ import {
     RECEIVE_RATINGS,
     RECEIVE_INFO,
     INCREMENT_FOOD_COUNT,
-    DECREMENT_FOOD_COUNT
+    DECREMENT_FOOD_COUNT,
+    CLEAR_CART
 } from './mutation-types'
 
 
@@ -75,9 +76,16 @@ export default {
         }
         
     }
+    ,
+    //清空购物车
+    [CLEAR_CART](state){
+        // 不能直接清空，goods中的对象count还存在，并且被多个地方引用(当前购物车中的对象就是引用的goods中的那个对象)
+        // state.cartFoods = [];
 
-
-
-    // INCREMENT_FOOD_COUNT,
-    // DECREMENT_FOOD_COUNT
+        // 首先重置count中的数据
+        state.cartFoods.forEach((food)=>food.count = 0)
+        // 移除购物车中所有购物项
+        state.cartFoods = [];
+    }
+    
 }
