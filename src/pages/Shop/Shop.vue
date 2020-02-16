@@ -54,7 +54,7 @@
         display block
         position relative
         &.router-link-active
-          color #02a774
+          color #0080cb
           &::after
             content ''
             position absolute
@@ -63,5 +63,5 @@
             width 35px
             height 2px
             transform translateX(-50%)
-            background #02a774
+            background #0080cb
 </style>

@@ -167,7 +167,7 @@
             text-align center
             background #2b343c
             &.highlight
-              background $green
+              background #0080cb
             .icon-gouwucheman
               line-height 44px
               font-size 24px

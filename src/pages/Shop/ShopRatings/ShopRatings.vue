@@ -215,7 +215,7 @@
           color: rgb(77, 85, 93)
           background: rgba(77, 85, 93, 0.2)
           &.active
-            background: $green
+            background: #0080cb
             color: #fff
           .count
             margin-left: 2px
@@ -233,7 +233,7 @@
           display: inline-block
           vertical-align: top
           margin-right: 4px
-          font-size: 24px
+          font-size: 18px
         .text
           display: inline-block
           vertical-align: top

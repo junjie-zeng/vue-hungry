@@ -36,7 +36,7 @@
       padding 6px
       line-height 24px
       font-size 24px
-      color $green
+      color #0080cb
       &.move-enter-active, &.move-leave-active
         transition all .3s
       &.move-enter, &.move-leave-to
@@ -56,5 +56,5 @@
       padding: 6px
       line-height: 24px
       font-size: 24px
-      color $green
+      color #0080cb
 </style>

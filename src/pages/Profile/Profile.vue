@@ -17,7 +17,7 @@
               </p>
             </div>
             <span class="arrow">
-              <i class="iconfont icon-jiantou1"></i>
+              <i class="iconfont icon-jiantou"></i>
             </span>
           </router-link>
         </section>
@@ -46,7 +46,7 @@
             <div class="my_order_div">
               <span>我的订单</span>
               <span class="my_order_icon">
-                <i class="iconfont icon-jiantou1"></i>
+                <i class="iconfont icon-jiantou"></i>
               </span>
             </div>
           </a>
@@ -58,7 +58,7 @@
             <div class="my_order_div">
               <span>积分商城</span>
               <span class="my_order_icon">
-                <i class="iconfont icon-jiantou1"></i>
+                <i class="iconfont icon-jiantou"></i>
               </span>
             </div>
           </a>
@@ -70,7 +70,7 @@
             <div class="my_order_div">
               <span>硅谷外卖会员卡</span>
               <span class="my_order_icon">
-                <i class="iconfont icon-jiantou1"></i>
+                <i class="iconfont icon-jiantou"></i>
               </span>
             </div>
           </a>
@@ -84,7 +84,7 @@
             <div class="my_order_div">
               <span>服务中心</span>
               <span class="my_order_icon">
-                <i class="iconfont icon-jiantou1"></i>
+                <i class="iconfont icon-jiantou"></i>
               </span>
             </div>
           </a>
@@ -131,7 +131,7 @@
               clearFix()
               position relative
               display block
-              background #02a774
+              background #0080cb
               padding 20px 10px
               .profile_image
                 float left
@@ -171,7 +171,7 @@
                 position absolute
                 right 15px
                 top 40%
-                .icon-jiantou1
+                .icon-jiantou
                   color #fff
                   font-size 5px
           .profile_info_data
@@ -231,14 +231,14 @@
                 >.iconfont
                   margin-left -10px
                   font-size 30px
-                .icon-order-s
-                  color #02a774
+                .icon-dingdan
+                  color #0080cb
                 .icon-jifen
                   color #ff5f3e
-                .icon-vip
+                .icon-huiyuan
                   color #f90
-                .icon-fuwu
-                  color #02a774
+                .icon-fuwuzhongxin
+                  color #0080cb
               .my_order_div
                 width 100%
                 border-bottom 1px solid #f1f1f1
@@ -253,7 +253,7 @@
                 .my_order_icon
                   width 10px
                   height 10px
-                  .icon-jiantou1
+                  .icon-jiantou
                     color #bbb
                     font-size 10px
 </style>

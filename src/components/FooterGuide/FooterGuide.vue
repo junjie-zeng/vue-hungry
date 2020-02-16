@@ -61,7 +61,7 @@
             color #999999
             text-decoration none
             &.on
-                color #02a774
+                color #0080cb
             span 
                 font-size 12px
                 margin-top 2px
