@@ -2,7 +2,9 @@
     <div class="food" v-if = "isShow">
          <div class="food-content">
               <div class="image-header">
-                   <img :src="food.image"> 
+                   <!-- <img :src="food.image">  -->
+                   <!-- 图片懒加载形式 -->
+                   <img v-lazy = "food.image"> 
                    <p class="foodpanel-desc">{{food.info}}</p> 
                    <div class="back" @click = "toggleShow"> 
                        <i class="iconfont icon-jiantou4"></i>

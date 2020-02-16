@@ -175,6 +175,44 @@
         - 查询
      
 
+2020.2.16
+        - 缓存路由组件
+            - 比如点餐页面，当已选择了商品，然后切换到评价页面在切换回来数据会重新加载
+            - 在 router-view 上套用 keep-alive （缓存路由组件对象）
+        - 路由组件懒加载 
+            - 首先所有的js都是打成了一个包，但我我们是多路由代码，我们有的路由只是在我们需要的时候才去创建
+            - 将路由组件通过函数返回的方式，只有执行函数的时候才会加载路由,这个函数会在请求对应的路由路径时才会执行
+        
+        - 图片懒加载
+            - 安装 vue-lazyload ,cnpm install --save vue-lazyload
+            - 引入 import VueLazyload from 'vue-lazyload'
+            - 引人图片 import loading from './common/images/loading-bars.svg';
+            - 使用 
+                Vue.use(VueLazyload,{ // 内部自定义一个指令 lazy
+                   loading
+                }) 
+        
+        -- 日期过滤
+               - 安装moment cnpm install --save moment
+               - 自定义过滤器
+               - 在main.js将该过滤器运行加载
+               - 组件中使用   <div class="time">{{rating.rateTime | date-fromat}}</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         注意：写vuex界面的显示跟数据有关系

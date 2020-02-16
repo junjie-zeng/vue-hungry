@@ -5,10 +5,16 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // 引入组件
-import MSite from '../pages/MSite/MSite.vue'
-import Order from '../pages/Order/Order.vue'
-import Search from '../pages/Search/Search.vue'
-import Profile from '../pages/Profile/Profile.vue'
+// import MSite from '../pages/MSite/MSite.vue'
+// import Order from '../pages/Order/Order.vue'
+// import Search from '../pages/Search/Search.vue'
+// import Profile from '../pages/Profile/Profile.vue'
+// 路由懒加载配置（此时返回的是路由组件的函数，只有执行函数的时候才会加载路由，这个函数会在请求对应的路由路径时才会执行）
+const MSite = ()=> import("../pages/MSite/MSite.vue")
+const Order = ()=> import("../pages/Order/Order.vue")
+const Search = ()=> import("../pages/Search/Search.vue")
+const Profile = ()=> import("../pages/Profile/Profile.vue")
+
 import Login from '../pages/Login/login.vue'
 // 商家一些路由
 import Shop from '../pages/Shop/Shop.vue'
@@ -25,7 +31,7 @@ export default new Router({
   routes: [
     { // 首页
       path:'/msite',
-      component:MSite,
+      component:MSite, 
       meta:{
         showFooter:true
       }

@@ -4,7 +4,7 @@
             <li class="shop_li border-1px" v-for = "(shop,index) in shops" :key = "index" @click = "$router.push('/shop')">
             <a >
                 <div class="shop_left">
-                  <!-- <img class="shop_img" :src="'http://cangdu.org:8001/img/'+shop.image_path"> -->
+                  <!-- <img class="shop_img" v-lazy ="'http://cangdu.org:8001/img/'+shop.image_path"> -->
                   </div>
                   <div class="shop_right">
                   <section class="shop_detail_header">
@@ -40,7 +40,7 @@
             </li>
         </ul>
         <ul v-else>
-          <li v-for = "item in 6">
+          <li v-for = "(item,index) in 6" :key = "index"> 
             <img  src="./images/shop_back.svg" >
           </li>
         </ul>
